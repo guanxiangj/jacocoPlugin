@@ -1,0 +1,33 @@
+plugins {
+    id 'kotlin'
+    id 'groovy'
+    id 'maven'
+    id 'maven-publish'
+}
+group='com.gxj.jacoco'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation gradleApi()//gradle sdk
+    implementation localGroovy()//groovy sdk
+    implementation 'com.android.tools.build:gradle:4.0.1'
+    implementation 'com.android.tools.build:transform-api:1.5.0'
+    implementation group: 'org.ow2.asm', name: 'asm', version: '8.0.1'
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '8.0.1'
+    implementation group: 'org.ow2.asm', name: 'asm-tree', version: '8.0.1'
+    implementation ('org.jacoco:org.jacoco.report:0.8.5'){
+        exclude group: 'org.jacoco', module: 'org.jacoco.core'
+    }
+    implementation 'com.gxj.jacoco:jacoco-core:1.0.0'
+
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../repo'))
+        pom.groupId = 'com.gxj.jacoco'
+        pom.artifactId = 'JacocoPlugin'//名字随便取
+        pom.version = '1.0.0'
+    }
+}

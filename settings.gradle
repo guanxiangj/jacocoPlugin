@@ -1,0 +1,6 @@
+rootProject.name = "JacocoPlugin"
+include ':app'
+include ':plugin'
+include ':jacoco-core'
+include ':rt'
+include ':rt-no-op'
