@@ -19,6 +19,8 @@ public class MyApp extends Application {
 
     @Override
     public void onTrimMemory(int level) {
+        Test1.call1();
+        Test1.call2();
         Log.d("myapp","切后台................");
         super.onTrimMemory(level);
         if (level == TRIM_MEMORY_UI_HIDDEN) {

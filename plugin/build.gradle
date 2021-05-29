@@ -3,8 +3,9 @@ plugins {
     id 'groovy'
     id 'maven'
     id 'maven-publish'
+    //id 'com.github.dcendents.android-maven'
 }
-group='com.gxj.jacoco'
+group='com.github.guanxiangj'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -19,7 +20,8 @@ dependencies {
     implementation ('org.jacoco:org.jacoco.report:0.8.5'){
         exclude group: 'org.jacoco', module: 'org.jacoco.core'
     }
-    implementation 'com.gxj.jacoco:jacoco-core:1.0.0'
+    implementation project(path: ':jacoco-core')
+    //implementation 'com.github.guanxiangj.jacocoPlugin:jacoco-core:1.0.0'
 
 }
 

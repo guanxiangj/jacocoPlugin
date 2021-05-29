@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
-    id 'com.gxj.jacoco.JacocoPlugin'
+    //id 'com.gxj.jacoco.JacocoPlugin'
 }
 
 /*JacocoPlugin {
@@ -10,16 +10,16 @@ plugins {
 }*/
 
 //代码覆盖配置
-jacocoCoverageConfig {
+/*jacocoCoverageConfig {
     jacocoEnable true //开关
     branchName 'main'//要对比的分支名
-    host="http://10.10.17.105:8080"//下载服务host
+    host="http://192.168.16.150:8080"//下载服务host
     execDir "${project.buildDir.absolutePath}/outputs/coverage"//ec 下载存放路径
     sourceDirectories = getAllJavaDir() //源码路径
     classDirectories = ["${rootProject.projectDir.absolutePath}/app/classes"] //classes 路径
     gitPushShell="${project.projectDir}/shell/gitPushShell.sh" //提交git 命令
     copyClassShell="${project.projectDir}/shell/pullDiffClass.sh" //copy classes 命令
-    includes = ['com.andjacoco.demo'] //要 包含的class 包名
+    includes = ['com.gxj.jacocoplugin'] //要 包含的class 包名
     excludeClass = { // return true 表示要排除的class
 //        println("exclude it=${it}")
         return false
@@ -28,7 +28,7 @@ jacocoCoverageConfig {
         println("excludeMethod it=${it}")
         return false
     }
-}
+}*/
 
 android {
     compileSdkVersion 29
@@ -53,13 +53,13 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
+            //buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug{
+        /*debug{
             buildConfigField "String", "host", "\"${jacocoCoverageConfig.host}\""
 
-        }
+        }*/
     }
     compileOptions {
         sourceCompatibility sourceCompatibility
